@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varskiy | Software Engineer</title>
+    <link rel="icon" type="image/png" href="Vector.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.3);
+            --bg-dark: #050505;
+            --card-bg: #121212;
+            --border-color: #262626;
+            --text-main: #ffffff;
+            --text-secondary: #d1d1d6;
+            --text-muted: #8e8e93;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            color: var(--accent-color) !important;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+        .hero-section {
+            padding: 150px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+        }
+
+        /* PROJECTS */
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            background: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+            padding: 30px !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-learn {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            background: transparent;
+            border-radius: 10px;
+            padding: 8px 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-learn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .project-card h4 {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: var(--text-secondary) !important;
+            font-size: 0.95rem;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .badge-tech {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-weight: 500;
+            margin-right: 8px;
+            padding: 5px 12px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .badge-tech {
+            background-color: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* SKILLS SECTION */
+        #skills {
+            background-color: #080808;
+        }
+
+        .skills-inner {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-inner::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .skills-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .skills-tags-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 110px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: default;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .skill-tag.level-expert {
+            border: 1px solid rgba(168, 85, 247, 0.35);
+        }
+
+        .skill-tag.level-advanced {
+            border: 1px solid rgba(96, 165, 250, 0.25);
+        }
+
+        .skill-tag.level-intermediate {
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        .skill-tag::after {
+            content: attr(data-level);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(101%);
+            transition: transform 0.3s ease;
+            font-weight: 700;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0 5px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .skill-tag.level-expert::after {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+        .skill-tag.level-advanced::after {
+            background: #60a5fa;
+            color: #fff;
+        }
+
+        .skill-tag.level-intermediate::after {
+            background: #34d399;
+            color: #fff;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            z-index: 10;
+        }
+
+        .skill-tag.level-expert:hover {
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
+            border-color: var(--accent-color);
+        }
+
+        .skill-tag.level-advanced:hover {
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.25);
+            border-color: #60a5fa;
+        }
+
+        .skill-tag.level-intermediate:hover {
+            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.25);
+            border-color: #34d399;
+        }
+
+        .skill-tag:hover::after {
+            transform: translateY(0);
+        }        /* TYPEWRITER */
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: .15em solid var(--accent-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent-color);
+            }
+        }
+
+        /* BUTTONS */
+        .btn-custom {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 16px 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 15px 30px var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        /* MODAL */
+        .modal-content {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            background: #000;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent-color) !important;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff !important;
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px var(--accent-color));
+        }
+
+        /* FILE UPLOAD */
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 11px 15px;
+            background: #0e0e0e;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .file-upload-wrapper:hover .file-upload-label {
+            border-color: var(--accent-color);
+            color: #fff;
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        /* COMMENTS */
+        #comments {
+            background: var(--bg-dark);
+        }
+
+        .comment-form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comment-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), rgba(168, 85, 247, 0.15));
+            border-radius: 24px 24px 0 0;
+        }
+
+        .comment-form-card label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .comment-form-card .form-control {
+            background: #0e0e0e !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 12px !important;
+            color: #fff !important;
+            padding: 12px 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .comment-form-card .form-control:focus {
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.12) !important;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--accent-color), #7c3aed);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 14px 32px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
+            opacity: 0.92;
+        }
+
+        /* COMMENT CARDS */
+        .comment-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .comment-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 10px;
+            right: 22px;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--accent-color);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            font-weight: 900;
+            pointer-events: none;
+        }
+
+        .comment-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 36px rgba(168, 85, 247, 0.13);
+            transform: translateY(-4px);
+        }
+
+        .comment-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .comment-avatar.has-photo {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .comment-avatar.has-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comment-stars {
+            color: #ffffff;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+        }
+        /* STAR RATING INPUT */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 4px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--border-color);
+            transition: color 0.2s ease;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .star-rating label::before {
+            content: '★';
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffffff;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #e0e0e0;
+        }        .comment-text {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .comment-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .comment-photo-preview {
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .comment-photo-preview img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .empty-comments {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-comments i {
+            font-size: 2.8rem;
+            opacity: 0.25;
+            display: block;
+            margin-bottom: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top">
+        <div class="container">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="#"
+                    style="padding:0;line-height:1;margin-right:0;">
+                    <img src="Vector.png" alt="Varskiy Logo"
+                        style="height:24px;width:auto;margin-right:8px;filter:drop-shadow(0 0 8px var(--accent-glow));display:block;">
+                    <span
+                        style="font-size:24px;letter-spacing:2px;margin:0;display:block;color:var(--accent-color);text-shadow:0 0 10px var(--accent-glow);">VARSKIY</span>
+                </a>
+                <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navMenu" style="color:var(--accent-color);background:transparent;">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+                <div class="d-none d-lg-flex align-items-center">
+                    <a href="#projects" class="nav-link px-3">Проекты</a>
+                    <a href="#skills" class="nav-link px-3">Стек</a>
+                    <a href="#comments" class="nav-link px-3">Отзывы</a>
+
+                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-2"
+                        style="color: var(--accent-color); font-size: 1.5rem;">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                    <a href="" target="_blank" class="nav-link px-2"
+                        style="color: var(--accent-color); font-size: 1.5rem;">
+                        <i class="bi bi-discord"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="collapse d-lg-none" id="navMenu">
+                <div class="d-flex flex-column py-2">
+                    <a href="#projects" class="nav-link px-3 py-2" data-bs-toggle="collapse"
+                        data-bs-target="#navMenu">Проекты</a>
+                    <a href="#skills" class="nav-link px-3 py-2" data-bs-toggle="collapse"
+                        data-bs-target="#navMenu">Стек</a>
+                    <a href="#comments" class="nav-link px-3 py-2" data-bs-toggle="collapse"
+                        data-bs-target="#navMenu">Отзывы</a>
+
+                    <div class="d-flex align-items-center text-secondary my-3">
+                        <hr class="flex-grow-1 my-0 border-secondary">
+                        <span class="px-3 fw-medium small">Связь со мной</span>
+                        <hr class="flex-grow-1 my-0 border-secondary">
+                    </div>
+
+                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        Telegram
+                    </a>
+                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="typewriter">
+                        <h1 class="display-3 fw-bold mb-4">SOFTWARE ENGINEER</h1>
+                    </div>
+                    <p class="lead mb-5 text-white opacity-75">
+                        Меня зовут Varskiy. Я проектирую и создаю цифровые решения, используя мощь современных языков
+                        программирования. От высоконагруженных бэкендов на Java и C# до элегантных интерфейсов на
+                        TypeScript.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#projects" class="btn-custom">Смотреть работу</a>
+                        <a href="#comments" class="btn-custom">Оставить отзыв</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block text-end" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="Frame 2.png" alt="Varskiy" class="img-fluid"
+                        style="filter:drop-shadow(0 0 30px var(--accent-glow));max-height:300px;border-radius:20px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Проекты</h2>
+            <div class="row g-4" id="projects-container">
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Task Orchestrator</h4>
+                            <i class="bi bi-server fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Backend система управления задачами с чистой архитектурой.
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">TS</span>
+                                <span class="badge badge-tech">Node.js</span>
+                            </div>
+                            <button onclick="showProjectDetails('task-orchestrator')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Portfolio Engine</h4>
+                            <i class="bi bi-terminal fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Интерактивный терминал-портфолио на React.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">React</span>
+                                <span class="badge badge-tech">Framer Motion</span>
+                            </div>
+                            <button onclick="showProjectDetails('portfolio-engine')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Auth Guard</h4>
+                            <i class="bi bi-shield-lock fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Микросервис аутентификации: JWT и защита роутов.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">Security</span>
+                                <span class="badge badge-tech">JWT</span>
+                            </div>
+                            <button onclick="showProjectDetails('auth-guard')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Log Sentinel</h4>
+                            <i class="bi bi-eye fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Системная утилита для мониторинга логов в реальном времени.
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">Node.js</span>
+                                <span class="badge badge-tech">DevOps</span>
+                            </div>
+                            <button onclick="showProjectDetails('log-sentinel')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Mobile App</h4>
+                            <i class="bi bi-phone fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Кроссплатформенное мобильное приложение на React Native.
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">React Native</span>
+                                <span class="badge badge-tech">TS</span>
+                            </div>
+                            <button onclick="showProjectDetails('mobile-app')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="fw-bold mb-0">Laravel Core</h4>
+                            <i class="bi bi-code-slash fs-5" style="color:#a855f7;"></i>
+                        </div>
+                        <p class="text-secondary small mb-4">Enterprise-шаблон на PHP/Laravel с API и админкой.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-tech">PHP</span>
+                                <span class="badge badge-tech">Laravel</span>
+                            </div>
+                            <button onclick="showProjectDetails('laravel-core')" class="btn-learn"
+                                style="background:var(--accent-color);color:#fff;">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Стек</h2>
+
+            <div class="skills-inner" data-aos="fade-up" data-aos-delay="100">
+                <div class="skills-tags-wrap">
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="0" data-level="Expert">TypeScript</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="50" data-level="Expert">JavaScript</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="100" data-level="Advanced">Node.js</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="150" data-level="Advanced">Express</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="200" data-level="Expert">React</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="250" data-level="Advanced">React Native</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="300" data-level="Advanced">Framer Motion</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="350" data-level="Advanced">PHP</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="400" data-level="Advanced">Laravel</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="450" data-level="Expert">HTML</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="500" data-level="Expert">CSS</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="550" data-level="Expert">Bootstrap</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="600" data-level="Advanced">Java</div>
+                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="650" data-level="Intermediate">Python</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="700" data-level="Advanced">C#</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="750" data-level="Advanced">JWT / Security</div>
+                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="800" data-level="Intermediate">DevOps</div>
+                </div>
+            </div>        </div>
+    </section>
+
+    <!-- COMMENTS -->
+    <section id="comments" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Отзывы</h2>
+
+            <div class="comment-form-card mb-5" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div
+                        style="width:42px;height:42px;border-radius:12px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);display:flex;align-items:center;justify-content:center;">
+                        <i class="bi bi-pencil-square" style="color:var(--accent-color);font-size:1.1rem;"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-0 text-white">Оставить отзыв</h5>
+                        <p class="mb-0" style="font-size:0.8rem;color:var(--text-muted);">Поделитесь впечатлением о
+                            совместной работе</p>
+                    </div>
+                </div>
+                <form id="comment-form">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label>Имя</label>
+                            <input type="text" id="comment-name" class="form-control" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Фото (необязательно)</label>
+                            <div class="file-upload-wrapper">
+                                <div class="file-upload-label" id="file-label">
+                                    <i class="bi bi-image me-2"></i>Выберите фото
+                                </div>
+                                <input type="file" id="comment-image" class="file-upload-input" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label>Сообщение</label>
+                        <textarea id="comment-text" class="form-control" rows="4"
+                            placeholder="Расскажите о вашем опыте работы..." required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label>Оценка</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                            <input type="radio" id="star1" name="rating" value="1" checked><label for="star1"></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-send me-2"></i>Отправить отзыв
+                    </button>
+                </form>
+            </div>
+
+            <div class="row g-4" id="comments-container"></div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">© 2026 VARSKIY. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-white fs-4" id="modalTitle"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="modalContent"></div>
+                <div class="modal-footer border-0 pt-0" id="modalFooter"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        // PROJECT MODAL
+        const projectData = {
+            'task-orchestrator': {
+                title: 'Task Orchestrator',
+                description: 'Полноценная Backend-система для управления задачами. Реализована на Node.js с использованием TypeScript. Чистая архитектура, REST API, валидация данных.',
+                stack: ['Node.js', 'TypeScript', 'Express'],
+                url: 'projects/task-orchestrator.html'
+            },
+            'portfolio-engine': {
+                title: 'Portfolio Engine',
+                description: 'Креативный фронтенд-проект, имитирующий работу системного терминала. Интерактивный интерфейс с анимациями на Framer Motion.',
+                stack: ['React', 'TypeScript', 'Framer Motion'],
+                url: 'projects/portfolio-engine.html'
+            },
+            'auth-guard': {
+                title: 'Auth Guard',
+                description: 'Модуль безопасности для современных веб-приложений. JWT аутентификация, защита роутов, refresh-токены и middleware для верификации.',
+                stack: ['Node.js', 'JWT', 'Express'],
+                url: 'projects/auth-guard.html'
+            },
+            'log-sentinel': {
+                title: 'Log Sentinel',
+                description: 'Системная утилита для мониторинга логов в реальном времени. Поддержка фильтрации, алертов и экспорта данных.',
+                stack: ['Node.js', 'DevOps'],
+                url: 'projects/log-sentinel.html'
+            },
+            'mobile-app': {
+                title: 'Mobile App',
+                description: 'Кроссплатформенное мобильное приложение на React Native. Единая кодовая база для iOS и Android.',
+                stack: ['React Native', 'TypeScript'],
+                url: 'projects/mobile-app.html'
+            },
+            'laravel-core': {
+                title: 'Laravel Core',
+                description: 'Enterprise-шаблон на PHP/Laravel с REST API, ролевой моделью доступа и готовой административной панелью.',
+                stack: ['PHP', 'Laravel'],
+                url: null
+            }
+        };
+
+        let projectModalInstance = null;
+        function showProjectDetails(id) {
+            const project = projectData[id];
+            if (!project) return;
+            document.getElementById('modalTitle').innerText = project.title;
+            document.getElementById('modalContent').innerHTML = `
+                <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;">${project.description}</p>
+                <div class="mt-4">
+                    <p class="mb-2" style="color:var(--text-muted);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Стек технологий</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        ${project.stack.map(s => `<span class="badge badge-tech" style="font-size:0.85rem;padding:7px 14px;">${s}</span>`).join('')}
+                    </div>
+                </div>`;
+            document.getElementById('modalFooter').innerHTML = project.url
+                ? `<a href="${project.url}" class="btn-learn" style="background:var(--accent-color);color:#fff;"><i class="bi bi-box-arrow-up-right me-1"></i>Открыть проект</a>`
+                : '';
+            if (!projectModalInstance) projectModalInstance = new bootstrap.Modal(document.getElementById('projectModal'));
+            projectModalInstance.show();
+        }
+
+        // COMMENTS
+        const commentForm = document.getElementById('comment-form');
+        const commentsContainer = document.getElementById('comments-container');
+
+        function getInitial(name) { return name ? name.trim().charAt(0).toUpperCase() : '?'; }
+
+        function renderStars(rating) {
+            return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        }
+
+        function loadComments() {
+            const stored = JSON.parse(localStorage.getItem('varskiy_comments') || '[]');
+            if (stored.length > 0) {
+                renderCommentsList(stored);
+                return;
+            }
+
+            // Load from JSON database if localStorage is empty
+            fetch('reviews.json')
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('varskiy_comments', JSON.stringify(data));
+                    renderCommentsList(data);
+                })
+                .catch(() => {
+                    renderCommentsList([]);
+                });
+        }
+
+        function renderCommentsList(comments) {
+            if (comments.length === 0) {
+                commentsContainer.innerHTML = `
+                    <div class="col-12">
+                        <div class="empty-comments">
+                            <i class="bi bi-chat-square-dots"></i>
+                            <p style="font-size:0.95rem;">Пока нет отзывов. Будьте первым!</p>
+                        </div>
+                    </div>`;
+                return;
+            }
+            commentsContainer.innerHTML = comments.map((c, i) => `
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${(i % 3) * 100}">
+                    <div class="comment-card">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="comment-avatar ${c.image ? 'has-photo' : ''}">
+                                ${c.image ? `<img src="${c.image}" alt="${c.name}">` : getInitial(c.name)}
+                            </div>
+                            <div class="flex-grow-1" style="min-width:0;">
+                                <div class="fw-bold text-white" style="font-size:0.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.name}</div>
+                                <div class="comment-date">${c.date}</div>
+                            </div>
+                            <div class="comment-stars">${renderStars(c.rating || 5)}</div>
+                        </div>
+                        <p class="comment-text">${c.text}</p>
+                        ${c.image ? `<div class="comment-photo-preview"><img src="${c.image}" alt="photo"></div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('comment-image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            document.getElementById('file-label').innerHTML = file
+                ? `<i class="bi bi-check-circle me-2" style="color:var(--accent-color)"></i>${file.name}`
+                : '<i class="bi bi-image me-2"></i>Выберите фото';
+        });
+
+        commentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('comment-name').value.trim();
+            const text = document.getElementById('comment-text').value.trim();
+            const imageFile = document.getElementById('comment-image').files[0];
+            const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
+
+            const saveComment = (imageData) => {
+                const comments = JSON.parse(localStorage.getItem('varskiy_comments') || '[]');
+                comments.unshift({
+                    name, text, image: imageData, rating,
+                    date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
+                });
+                localStorage.setItem('varskiy_comments', JSON.stringify(comments));
+                commentForm.reset();
+                document.getElementById('file-label').innerHTML = '<i class="bi bi-image me-2"></i>Выберите фото';
+                loadComments();
+            };
+
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = (e) => saveComment(e.target.result);
+                reader.readAsDataURL(imageFile);
+            } else {
+                saveComment(null);
+            }
+        });
+
+        loadComments();    </script>
+</body>
+
+</html>

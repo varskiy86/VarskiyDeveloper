@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Guard | Varskiy</title>
+    <link rel="icon" type="image/png" href="../Vector.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.3);
+            --bg-dark: #050505;
+            --card-bg: #121212;
+            --border-color: #262626;
+            --text-main: #ffffff;
+            --text-secondary: #d1d1d6;
+            --text-muted: #8e8e93;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .navbar-brand {
+            color: var(--accent-color) !important;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+        .nav-link { color: var(--text-secondary) !important; transition: all 0.3s; }
+        .nav-link:hover { color: var(--accent-color) !important; }
+        .project-header {
+            padding: 120px 0 60px;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+        }
+        .project-icon {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--accent-glow));
+        }
+        .badge-tech {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 16px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        .screenshot-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .screenshot-box img { width: 100%; height: auto; }
+        .screenshot-caption {
+            padding: 15px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .btn-back {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            background: transparent;
+            border-radius: 10px;
+            padding: 10px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-back:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+        .code-block {
+            background: #0a0a0a;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+            overflow-x: auto;
+        }
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            background: #000;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar sticky-top">
+        <div class="container">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html" style="padding: 0; line-height: 1;">
+                    <img src="../Vector.png" alt="Varskiy Logo" style="height: 24px; width: auto; margin-right: 8px; filter: drop-shadow(0 0 8px var(--accent-glow));">
+                    <span style="font-size: 24px; letter-spacing: 2px; color: var(--accent-color);">VARSKIY</span>
+                </a>
+                <a href="../index.html" class="btn-back">← На главную</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <i class="bi bi-shield-lock project-icon"></i>
+                    <h1 class="display-4 fw-bold mb-3">Auth Guard</h1>
+                    <p class="lead text-secondary mb-4">
+                        Модуль безопасности для современных веб-приложений. Реализует продвинутую схему аутентификации 
+                        с использованием короткоживущих Access-токенов и долгоживущих Refresh-токенов на базе JWT.
+                    </p>
+                    <div class="mb-4">
+                        <span class="badge-tech">Node.js</span>
+                        <span class="badge-tech">JWT</span>
+                        <span class="badge-tech">Express</span>
+                        <span class="badge-tech">bcrypt</span>
+                        <span class="badge-tech">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">О проекте</h2>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="feature-card">
+                        <i class="bi bi-gear feature-icon"></i>
+                        <h4 class="fw-bold mb-3">Назначение</h4>
+                        <p class="text-secondary">
+                            Auth Guard обеспечивает надёжную защиту веб-приложений от несанкционированного доступа. 
+                            Система управляет сессиями пользователей, проверяет права доступа и защищает API-эндпоинты 
+                            с помощью middleware-архитектуры.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <i class="bi bi-lightning feature-icon"></i>
+                        <h4 class="fw-bold mb-3">Где используется</h4>
+                        <p class="text-secondary">
+                            Интегрируется в любые веб-приложения, требующие аутентификации: SaaS-платформы, 
+                            интернет-магазины, корпоративные порталы, микросервисные архитектуры. 
+                            Может работать как самостоятельный микросервис.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="fw-bold mb-4" data-aos="fade-up">Ключевые возможности</h3>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-key feature-icon"></i>
+                        <h5 class="fw-bold">JWT токены</h5>
+                        <p class="text-secondary small">Access + Refresh токены с автоматическим обновлением</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-lock feature-icon"></i>
+                        <h5 class="fw-bold">Хеширование</h5>
+                        <p class="text-secondary small">bcrypt для надёжного хранения паролей</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-shield feature-icon"></i>
+                        <h5 class="fw-bold">Middleware</h5>
+                        <p class="text-secondary small">Защита роутов на уровне маршрутизатора</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="fw-bold mb-4" data-aos="fade-up">Пример кода</h3>
+            <div class="code-block" data-aos="fade-up">
+<pre>// JWT Middleware
+const authGuard = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Unauthorized' });
+  
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch {
+    res.status(403).json({ error: 'Invalid token' });
+  }
+};</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" style="background: #080808;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Скриншоты</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="screenshot-box">
+                        <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); padding: 20px;">
+                            <i class="bi bi-key-fill" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <div style="width: 90%; font-family: monospace; font-size: 0.75rem;">
+                                <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <div style="color: var(--accent-color); font-weight: bold; margin-bottom: 8px;">🔐 JWT Token Flow</div>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <div style="background: #0a0a0a; padding: 8px; border-radius: 4px; border-left: 3px solid #00ff00;">
+                                            <div style="color: #00ff00; font-size: 0.65rem;">1. POST /api/login</div>
+                                            <div style="color: var(--text-muted); font-size: 0.6rem;">email + password → server</div>
+                                        </div>
+                                        <div style="background: #0a0a0a; padding: 8px; border-radius: 4px; border-left: 3px solid #ffaa00;">
+                                            <div style="color: #ffaa00; font-size: 0.65rem;">2. Response: tokens</div>
+                                            <div style="color: var(--text-muted); font-size: 0.6rem;">accessToken (15min) + refreshToken (7d)</div>
+                                        </div>
+                                        <div style="background: #0a0a0a; padding: 8px; border-radius: 4px; border-left: 3px solid var(--accent-color);">
+                                            <div style="color: var(--accent-color); font-size: 0.65rem;">3. Access protected routes</div>
+                                            <div style="color: var(--text-muted); font-size: 0.6rem;">Authorization: Bearer <token></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-caption">Схема аутентификации JWT</div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="screenshot-box">
+                        <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); padding: 20px;">
+                            <i class="bi bi-shield-check" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <div style="width: 90%; font-family: monospace; font-size: 0.75rem;">
+                                <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <div style="color: var(--accent-color); font-weight: bold; margin-bottom: 8px;">🛡️ Middleware Chain</div>
+                                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #00ff00;"></div>
+                                            <span style="color: #fff; font-size: 0.65rem;">Request → CORS → Rate Limit</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffaa00;"></div>
+                                            <span style="color: #fff; font-size: 0.65rem;">→ Auth Middleware (JWT)</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent-color);"></div>
+                                            <span style="color: #fff; font-size: 0.65rem;">→ Role Check → Controller</span>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #00ff00;"></div>
+                                            <span style="color: #fff; font-size: 0.65rem;">→ Response → Client</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screenshot-caption">Структура middleware</div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="screenshot-box">
+                        <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); padding: 20px;">
+                            <i class="bi bi-file-earmark-lock" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <div style="width: 90%; font-family: monospace; font-size: 0.7rem; background: #0a0a0a; border-radius: 8px; padding: 15px;">
+                                <div style="color: var(--text-muted);">// Token Payload Structure</div>
+                                <div style="color: #ff6b9d;">{</div>
+                                <div style="color: #d1d1d6; padding-left: 15px;">"sub": <span style="color: #00ff00;">"user-uuid"</span>,</div>
+                                <div style="color: #d1d1d6; padding-left: 15px;">"role": <span style="color: #00ff00;">"admin"</span>,</div>
+                                <div style="color: #d1d1d6; padding-left: 15px;">"iat": <span style="color: #ffaa00;">1705329122</span>,</div>
+                                <div style="color: #d1d1d6; padding-left: 15px;">"exp": <span style="color: #ffaa00;">1705329122</span></div>
+                                <div style="color: #ff6b9d;">}</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-caption">Структура JWT токена</div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="screenshot-box">
+                        <div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); padding: 20px;">
+                            <i class="bi bi-terminal" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <div style="width: 90%; font-family: monospace; font-size: 0.75rem; background: #0a0a0a; border-radius: 8px; padding: 15px;">
+                                <div style="color: #00ff00;">$ curl -X POST http://localhost:3000/api/login \</div>
+                                <div style="color: #00ff00; padding-left: 20px;">-d '{"email":"user@test.com","password":"***"}'</div>
+                                <div style="color: var(--text-secondary); margin-top: 10px;">{</div>
+                                <div style="color: var(--text-secondary); padding-left: 15px;">"accessToken": "eyJhbGci...",</div>
+                                <div style="color: var(--text-secondary); padding-left: 15px;">"refreshToken": "eyJhbGci..."</div>
+                                <div style="color: var(--text-secondary);">}</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-caption">Тестирование API авторизации</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p class="mb-0">© 2026 VARSKIY. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>

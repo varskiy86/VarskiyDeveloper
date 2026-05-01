@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varskiy | Software Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            border-bottom: 1px solid #eeeeee;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .hero-section {
+            padding: 100px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+        .project-card {
+            border: 1px solid #eeeeee;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            height: 100%;
+            background: #fff;
+        }
+        .project-card:hover {
+            border-color: #000;
+            transform: translateY(-5px);
+        }
+        .badge-tech {
+            background-color: #000;
+            color: #fff;
+            border-radius: 0;
+            font-weight: 400;
+            margin-right: 5px;
+        }
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .skill-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border: 1px solid #000;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .skill-tag:hover {
+            background: #000;
+            color: #fff;
+        }
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid #eeeeee;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-dark {
+            border-radius: 0;
+            padding: 10px 25px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">VARSKIY</a>
+        <div class="d-flex">
+            <a href="#projects" class="nav-link px-3">Проекты</a>
+            <a href="#skills" class="nav-link px-3">Стек</a>
+            <a href="#contact" class="nav-link px-3">Контакт</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-3 fw-bold mb-4">SOFTWARE ENGINEER</h1>
+                <p class="lead mb-5 text-secondary">
+                    Меня зовут Varskiy. Я проектирую и создаю цифровые решения, используя мощь современных языков программирования. От высоконагруженных бэкендов на Java и C# до элегантных интерфейсов на TypeScript.
+                </p>
+                <a href="#projects" class="btn btn-dark">Смотреть работу</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Избранные проекты</h2>
+        <div class="row g-4" id="projects-container">
+            <!-- Проекты будут дополнены атрибутами для модалок -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card p-4" role="button" onclick="showProjectDetails('task-orchestrator')">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">Task Orchestrator</h4>
+                        <i class="bi bi-server"></i>
+                    </div>
+                    <p class="text-secondary small">Backend система управления задачами с чистой архитектурой.</p>
+                    <div class="mt-auto">
+                        <span class="badge badge-tech">TS</span>
+                        <span class="badge badge-tech">Node.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card p-4" role="button" onclick="showProjectDetails('portfolio-engine')">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">Portfolio Engine</h4>
+                        <i class="bi bi-terminal"></i>
+                    </div>
+                    <p class="text-secondary small">Интерактивный терминал-портфолио на React.</p>
+                    <div class="mt-auto">
+                        <span class="badge badge-tech">React</span>
+                        <span class="badge badge-tech">Framer Motion</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card p-4" role="button" onclick="showProjectDetails('auth-guard')">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="fw-bold">Auth Guard</h4>
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <p class="text-secondary small">Микросервис аутентификации: JWT и защита роутов.</p>
+                    <div class="mt-auto">
+                        <span class="badge badge-tech">Security</span>
+                        <span class="badge badge-tech">JWT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Project Details -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-0">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold text-uppercase letter-spacing-1" id="modalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div id="modalContent">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const projectData = {
+        'task-orchestrator': {
+            title: 'Task Orchestrator',
+            description: 'Полноценная Backend-система для управления задачами. Реализована на Node.js с использованием TypeScript. Включает в себя валидацию данных, обработку ошибок и слоистую архитектуру (Controller-Service-Repository).',
+            features: ['RESTful API', 'Строгая типизация', 'UUID идентификация', 'Middleware для логирования'],
+            stack: ['Node.js', 'TypeScript', 'Express', 'Jest']
+        },
+        'portfolio-engine': {
+            title: 'Portfolio Engine',
+            description: 'Креативный фронтенд-проект, имитирующий работу системного терминала. Позволяет пользователям взаимодействовать с портфолио через консольные команды.',
+            features: ['Кастомный парсер команд', 'Анимации появления текста', 'История команд', 'Адаптивный дизайн'],
+            stack: ['React', 'TypeScript', 'Framer Motion', 'Lucide Icons']
+        },
+        'auth-guard': {
+            title: 'Auth Guard',
+            description: 'Модуль безопасности для современных веб-приложений. Реализует продвинутую схему аутентификации с использованием короткоживущих Access-токенов и долгоживущих Refresh-токенов.',
+            features: ['JWT шифрование', 'Хеширование паролей', 'Защита от Brute-force', 'CORS конфигурация'],
+            stack: ['Node.js', 'jsonwebtoken', 'bcrypt', 'Express']
+        }
+    };
+
+    function showProjectDetails(id) {
+        const project = projectData[id];
+        if (!project) return;
+
+        document.getElementById('modalTitle').innerText = project.title;
+        let html = `
+            <p class="lead text-secondary mb-4">${project.description}</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-uppercase small mb-3">Ключевые функции:</h6>
+                    <ul class="list-unstyled">
+                        ${project.features.map(f => `<li class="mb-2"><i class="bi bi-check2-circle me-2"></i>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold text-uppercase small mb-3">Технологии:</h6>
+                    <div>
+                        ${project.stack.map(s => `<span class="badge bg-dark rounded-0 me-1 mb-1">${s}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+        document.getElementById('modalContent').innerHTML = html;
+        
+        const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+        modal.show();
+    }
+</script>
+    </div>
+</section>
+
+<section id="skills" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Технологический стек</h2>
+        <div class="row">
+            <div class="col-12">
+                <div class="skill-tag">TypeScript</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">C#</div>
+                <div class="skill-tag">PHP</div>
+                <div class="skill-tag">Laravel</div>
+                <div class="skill-tag">Bootstrap</div>
+                <div class="skill-tag">HTML/CSS</div>
+                <div class="skill-tag">React Native</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center">
+    <div class="container">
+        <p class="mb-0">© 2026 VARSKIY. Все права защищены.</p>
+        <div class="mt-3">
+            <a href="#" class="text-dark mx-2"><i class="bi bi-telegram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
