@@ -647,28 +647,20 @@
                 </div>
             </div>
             <div class="collapse d-lg-none" id="navMenu">
-                <div class="d-flex flex-column py-2">
-                    <a href="#projects" class="nav-link px-3 py-2" data-bs-toggle="collapse"
-                        data-bs-target="#navMenu">Проекты</a>
-                    <a href="#skills" class="nav-link px-3 py-2" data-bs-toggle="collapse"
-                        data-bs-target="#navMenu">Стек</a>
-                    <a href="#comments" class="nav-link px-3 py-2" data-bs-toggle="collapse"
-                        data-bs-target="#navMenu">Отзывы</a>
-
-                    <div class="d-flex align-items-center text-secondary my-3">
-                        <hr class="flex-grow-1 my-0 border-secondary">
-                        <span class="px-3 fw-medium small">Связь со мной</span>
-                        <hr class="flex-grow-1 my-0 border-secondary">
-                    </div>
-
-                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
-                        Telegram
-                    </a>
-                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
-                        Discord(недоступен)
-                    </a>
+                <div class="d-flex flex-column py-2" id="navMenu">
+                    <a href="#projects" class="nav-link px-3 py-2">Проекты</a>
+                    <a href="#skills" class="nav-link px-3 py-2">Стек</a>
+                    <a href="#comments" class="nav-link px-3 py-2">Отзывы</a>
                 </div>
+
+                <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
+                    Telegram
+                </a>
+                <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
+                    Discord(недоступен)
+                </a>
             </div>
+        </div>
         </div>
     </nav>
 
@@ -945,6 +937,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navCollapse = document.getElementById('navMenu');
+
+            if (navCollapse && navLinks.length) {
+                // Создаём экземпляр Bootstrap Collapse
+                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navCollapse, { toggle: false });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Закрываем меню
+                        bsCollapse.hide();
+                    });
+                });
+            }
+        });
+
+
         AOS.init({ once: true });
 
         // PROJECT MODAL
