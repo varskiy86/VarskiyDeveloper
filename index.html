@@ -283,7 +283,9 @@
 
         .skill-tag:hover::after {
             transform: translateY(0);
-        }        /* TYPEWRITER */
+        }
+
+        /* TYPEWRITER */
         .typewriter h1 {
             overflow: hidden;
             border-right: .15em solid var(--accent-color);
@@ -535,6 +537,7 @@
             font-size: 0.72rem;
             letter-spacing: 2px;
         }
+
         /* STAR RATING INPUT */
         .star-rating {
             display: flex;
@@ -561,15 +564,17 @@
         }
 
         .star-rating label:hover,
-        .star-rating label:hover ~ label,
-        .star-rating input:checked ~ label {
+        .star-rating label:hover~label,
+        .star-rating input:checked~label {
             color: #ffffff;
         }
 
         .star-rating label:hover,
-        .star-rating label:hover ~ label {
+        .star-rating label:hover~label {
             color: #e0e0e0;
-        }        .comment-text {
+        }
+
+        .comment-text {
             color: var(--text-secondary);
             font-size: 0.93rem;
             line-height: 1.75;
@@ -656,13 +661,11 @@
                         <hr class="flex-grow-1 my-0 border-secondary">
                     </div>
 
-                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2"
-                        data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
                         Telegram
                     </a>
-                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2"
-                        data-bs-toggle="collapse" data-bs-target="#navMenu">
-                        Discord
+                    <a href="https://t.me/whietresk" target="_blank" class="nav-link px-3 py-2">
+                        Discord(недоступен)
                     </a>
                 </div>
             </div>
@@ -821,25 +824,43 @@
 
             <div class="skills-inner" data-aos="fade-up" data-aos-delay="100">
                 <div class="skills-tags-wrap">
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="0" data-level="Expert">TypeScript</div>
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="50" data-level="Expert">JavaScript</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="100" data-level="Advanced">Node.js</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="150" data-level="Advanced">Express</div>
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="200" data-level="Expert">React</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="250" data-level="Advanced">React Native</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="300" data-level="Advanced">Framer Motion</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="350" data-level="Advanced">PHP</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="400" data-level="Advanced">Laravel</div>
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="450" data-level="Expert">HTML</div>
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="500" data-level="Expert">CSS</div>
-                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="550" data-level="Expert">Bootstrap</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="600" data-level="Advanced">Java</div>
-                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="650" data-level="Intermediate">Python</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="700" data-level="Advanced">C#</div>
-                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="750" data-level="Advanced">JWT / Security</div>
-                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="800" data-level="Intermediate">DevOps</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="0" data-level="Expert">
+                        TypeScript</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="50" data-level="Expert">
+                        JavaScript</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="100" data-level="Advanced">
+                        Node.js</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="150" data-level="Advanced">
+                        Express</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="200" data-level="Expert">
+                        React</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="250" data-level="Advanced">
+                        React Native</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="300" data-level="Advanced">
+                        Framer Motion</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="350" data-level="Advanced">
+                        PHP</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="400" data-level="Advanced">
+                        Laravel</div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="450" data-level="Expert">HTML
+                    </div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="500" data-level="Expert">CSS
+                    </div>
+                    <div class="skill-tag level-expert" data-aos="zoom-in" data-aos-delay="550" data-level="Expert">
+                        Bootstrap</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="600" data-level="Advanced">
+                        Java</div>
+                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="650"
+                        data-level="Intermediate">Python</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="700" data-level="Advanced">
+                        C#</div>
+                    <div class="skill-tag level-advanced" data-aos="zoom-in" data-aos-delay="750" data-level="Advanced">
+                        JWT / Security</div>
+                    <div class="skill-tag level-intermediate" data-aos="zoom-in" data-aos-delay="800"
+                        data-level="Intermediate">DevOps</div>
                 </div>
-            </div>        </div>
+            </div>
+        </div>
     </section>
 
     <!-- COMMENTS -->
